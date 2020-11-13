@@ -80,7 +80,7 @@
 				// otherwise setting overflow:scroll|auto on an element containing the map would not work in webkit.
 				$(map).appendTo(mapHolder);
 				
-				$(imageMap).before('<img class="mapify-img" src="'+$(imageMap).attr("src")+'" />');
+				$(imageMap).before('<img class="mapify-img" src="'+$(imageMap).attr("src")+'" alt="'+$(imageMap).attr("alt")+'" />');
 				
 				var fakeImageMap = $(imageMap).prev(".mapify-img");
 				
