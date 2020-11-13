@@ -138,7 +138,7 @@
 
             this._mapHolder = $imageMap.parent();
             $(this.map).appendTo(this._mapHolder);
-            $imageMap.before('<img class="mapify-img" src="' + $imageMap.attr("src") + '" />');
+            $imageMap.before('<img class="mapify-img" src="' + $imageMap.attr("src") + '" alt="' + $imageMap.attr("alt") + '" />');
 
             $imageMap.before('<svg class="mapify-svg" width="' + this._mapWidth + '" height="' + this._mapHeight + '"></svg>');
             this.svgMap = $imageMap.prev('.mapify-svg');
@@ -269,10 +269,10 @@
         }).bind('touchstart.mapify', function () {
             _this.zones.removeClass('mapify-clickable');
             var polygon = _this.svgMap.find('polygon:eq(' + $(this).index() + ')')[0];
-            
+
             // DO NOT USE hasClass on SVGs, it won't work. Use .classList.contains() instead.
             // Issue #25: https://github.com/etienne-martin/mapify/issues/25
-            
+
             if( polygon.classList.contains("mapify-hover") ){
                 $(this).addClass('mapify-clickable');
             } else {
@@ -406,11 +406,11 @@
     Mapify.prototype._drawHighlight = function (zone) {
         var _this = this,
             groupIdValue = $(zone).attr('data-group-id'),
-            hoverClass = $(zone).attr('data-hover-class'); // Use .attr instead of .data https://github.com/etienne-martin/Mapify/issues/27 
+            hoverClass = $(zone).attr('data-hover-class'); // Use .attr instead of .data https://github.com/etienne-martin/Mapify/issues/27
 
         // Combine hover classes
         hoverClass = hoverClass ? this.options.hoverClass + " " + hoverClass : this.options.hoverClass;
-        
+
         if (!groupIdValue) {
             this._highlightSingleArea(zone, hoverClass);
         } else {
